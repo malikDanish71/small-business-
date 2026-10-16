@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agreements — SmartB2B</title>
+  <meta name="description" content="Manage digital trade agreements on SmartB2B. View, negotiate, and approve deal terms securely." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/globals.css" />
+  <link rel="stylesheet" href="css/agreements.css" />
+</head>
+<body>
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon"><svg width="24" height="24" viewBox="0 0 28 28" fill="none"><path d="M4 8L14 3L24 8V20L14 25L4 20V8Z" fill="url(#aLg)"/><defs><linearGradient id="aLg" x1="4" y1="3" x2="24" y2="25"><stop stop-color="#6C63FF"/><stop offset="1" stop-color="#00D4AA"/></linearGradient></defs></svg></div>
+        <span class="logo-text">Smart<span class="logo-accent">B2B</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="marketplace.html" class="nav-link">Marketplace</a>
+        <a href="agreements.html" class="nav-link active">Agreements</a>
+        <a href="coming-soon.html?feature=shipments" class="nav-link">Shipments</a>
+        <a href="coming-soon.html?feature=ai-trust" class="nav-link">AI Trust</a>
+        <a href="coming-soon.html?feature=dashboard" class="nav-link">Dashboard</a>
+      </div>
+      <div class="nav-actions">
+        <a href="coming-soon.html?feature=login" class="btn-ghost">Sign In</a>
+        <a href="coming-soon.html?feature=register" class="btn-primary">Get Started</a>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div style="padding-top: var(--nav-height);">
+    <div style="background: var(--bg-secondary); border-bottom: 1px solid var(--border); padding: 40px 0 32px;">
+      <div class="container">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+          <div>
+            <div class="section-badge" style="margin-bottom:12px;">Digital Agreements</div>
+            <h1 style="font-family:var(--font-display);font-size:clamp(28px,4vw,40px);font-weight:800;margin-bottom:8px;">Trade <span class="gradient-text">Agreements</span></h1>
+            <p style="color:var(--text-secondary);font-size:15px;">Manage, negotiate, and approve timestamped digital trade agreements.</p>
+          </div>
+          <button class="btn-primary" onclick="openModal('newAgreementModal')">+ New Agreement</button>
+        </div>
+        <div class="ag-stats-row">
+          <div class="ag-stat"><span class="ag-stat-num gradient-text">08</span><span class="ag-stat-label">Active</span></div>
+          <div class="ag-stat"><span class="ag-stat-num" style="color:var(--warning)">03</span><span class="ag-stat-label">Negotiating</span></div>
+          <div class="ag-stat"><span class="ag-stat-num" style="color:var(--text-muted)">02</span><span class="ag-stat-label">Draft</span></div>
+          <div class="ag-stat"><span class="ag-stat-num" style="color:var(--success)">24</span><span class="ag-stat-label">Completed</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="padding-top:32px;padding-bottom:64px;">
+      <div class="ag-tabs">
+        <button class="ag-tab active" onclick="filterAgreements('all',this)">All (37)</button>
+        <button class="ag-tab" onclick="filterAgreements('active',this)">Active (8)</button>
+        <button class="ag-tab" onclick="filterAgreements('negotiating',this)">Negotiating (3)</button>
+        <button class="ag-tab" onclick="filterAgreements('draft',this)">Draft (2)</button>
+        <button class="ag-tab" onclick="filterAgreements('completed',this)">Completed (24)</button>
+      </div>
+      <div class="ag-search-bar">
+        <input type="text" placeholder="Search by agreement ID, buyer, supplier, or product..." oninput="searchAgreements(this.value)" />
+      </div>
+      <div id="agreementsList"></div>
+    </div>
+  </div>
+  <!-- AGREEMENT DETAIL MODAL -->
+  <div class="modal-overlay" id="agDetailModal">
+    <div class="modal" style="max-width:720px;">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title" id="agModalTitle">Agreement Details</h2>
+          <div id="agModalStatus" style="margin-top:4px;"></div>
+        </div>
+        <button class="modal-close" onclick="closeModal('agDetailModal')">✕</button>
+      </div>
+      <div id="agModalBody"></div>
+    </div>
+  </div>
+  <!-- NEW AGREEMENT MODAL -->
+  <div class="modal-overlay" id="newAgreementModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title">📝 Create New Agreement</h2>
+        <button class="modal-close" onclick="closeModal('newAgreementModal')">✕</button>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Product / Service</label>
+        <input type="text" class="form-input" placeholder="e.g. Wholesale Rice 25kg bags" />
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div class="form-group">
+          <label class="form-label">Supplier</label>
+          <select class="form-select"><option>City Grain Traders</option><option>Prime Packaging Co.</option><option>Bright Electricals</option><option>Faisalabad Textiles</option></select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Agreed Price (PKR)</label>
+          <input type="number" class="form-input" placeholder="Price per unit" />
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div class="form-group">
+          <label class="form-label">Quantity</label>
+          <input type="number" class="form-input" placeholder="Units" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Delivery Date</label>
+          <input type="date" class="form-input" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Payment Terms</label>
+        <select class="form-select"><option>50% Advance, 50% on Delivery</option><option>Full Advance</option><option>Net 30</option><option>Payment on Delivery</option></select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Additional Terms</label>
+        <textarea class="form-textarea" placeholder="Cancellation policy, quality standards, packaging requirements..."></textarea>
+      </div>
+      <button class="btn-primary" style="width:100%;" onclick="createAgreement()">Create Agreement Draft</button>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none;padding-top:0;">
+        <p>© 2024 SmartB2B · Agreements Demo · Sample data only</p>
+        <div class="footer-badges"><span class="footer-badge">🔒 Secure</span><span class="footer-badge">📋 Timestamped</span></div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+  <script src="js/agreements.js"></script>
+</body>
+</html>

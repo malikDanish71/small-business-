@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartB2B — Local Trade. Verified Trust.</title>
+  <meta name="description" content="SmartB2B is an AI-powered B2B marketplace connecting shopkeepers, wholesalers, suppliers, and manufacturers through verified digital trade." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/globals.css" />
+  <link rel="stylesheet" href="css/landing.css" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path d="M4 8L14 3L24 8V20L14 25L4 20V8Z" fill="url(#logoGrad)" stroke="rgba(108,99,255,0.5)" stroke-width="1"/>
+            <path d="M14 3L14 25M4 8L24 20M24 8L4 20" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/>
+            <defs>
+              <linearGradient id="logoGrad" x1="4" y1="3" x2="24" y2="25" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#6C63FF"/>
+                <stop offset="1" stop-color="#00D4AA"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">Smart<span class="logo-accent">B2B</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="marketplace.html" class="nav-link">Marketplace</a>
+        <a href="agreements.html" class="nav-link">Agreements</a>
+        <a href="coming-soon.html?feature=shipments" class="nav-link">Shipments</a>
+        <a href="coming-soon.html?feature=ai-trust" class="nav-link">AI Trust</a>
+        <a href="coming-soon.html?feature=dashboard" class="nav-link">Dashboard</a>
+      </div>
+      <div class="nav-actions">
+        <a href="coming-soon.html?feature=login" class="btn-ghost" id="loginBtn">Sign In</a>
+        <a href="coming-soon.html?feature=register" class="btn-primary" id="registerBtn">Get Started</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <canvas id="particleCanvas"></canvas>
+      <div class="mesh-gradient"></div>
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        AI-Powered B2B Marketplace · Pakistan
+      </div>
+      <h1 class="hero-title">
+        Buy Wholesale.<br/>
+        <span class="gradient-text">Negotiate Fairly.</span><br/>
+        Trade with Confidence.
+      </h1>
+      <p class="hero-subtitle">
+        SmartB2B connects shopkeepers, distributors, wholesalers, warehouses, and manufacturers through verified digital agreements, AI fraud protection, and real-time order tracking.
+      </p>
+      <div class="hero-actions">
+        <a href="coming-soon.html?feature=register" class="btn-primary btn-lg pulse-btn">Start Trading Free</a>
+        <a href="marketplace.html" class="btn-outline btn-lg">Browse Marketplace</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num" data-target="2400">0</span>
+          <span class="stat-label">Active Suppliers</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="18500">0</span>
+          <span class="stat-label">Orders Completed</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="98">0</span>
+          <span class="stat-suffix">%</span>
+          <span class="stat-label">Trust Score</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="47">0</span>
+          <span class="stat-suffix">+</span>
+          <span class="stat-label">Cities Covered</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="floating-cards">
+        <div class="float-card card-1 tilt-card">
+          <div class="fc-icon">📦</div>
+          <div class="fc-info">
+            <span class="fc-title">Rice 25kg Bag</span>
+            <span class="fc-sub">City Grain Traders</span>
+          </div>
+          <div class="fc-price">PKR 3,250</div>
+          <div class="fc-badge verified">✓ Verified</div>
+        </div>
+        <div class="float-card card-2 tilt-card">
+          <div class="fc-icon">🤝</div>
+          <div class="fc-info">
+            <span class="fc-title">Deal Signed</span>
+            <span class="fc-sub">Agreement #AG-2847</span>
+          </div>
+          <div class="fc-badge active">● Active</div>
+        </div>
+        <div class="float-card card-3 tilt-card">
+          <div class="fc-icon">🤖</div>
+          <div class="fc-info">
+            <span class="fc-title">AI Trust Score</span>
+            <span class="fc-sub">SmartTrust AI</span>
+          </div>
+          <div class="fc-score">
+            <div class="score-ring">
+              <svg viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="24" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="4"/>
+                <circle cx="30" cy="30" r="24" fill="none" stroke="url(#scoreGrad)" stroke-width="4" stroke-dasharray="138" stroke-dashoffset="17" stroke-linecap="round" transform="rotate(-90 30 30)"/>
+                <defs>
+                  <linearGradient id="scoreGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop stop-color="#6C63FF"/><stop offset="1" stop-color="#00D4AA"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+              <span class="score-num">88</span>
+            </div>
+          </div>
+        </div>
+        <div class="float-card card-4 tilt-card">
+          <div class="fc-icon">🚚</div>
+          <div class="fc-info">
+            <span class="fc-title">Shipment #SH-441</span>
+            <span class="fc-sub">Lahore → Karachi</span>
+          </div>
+          <div class="fc-track">
+            <div class="track-dot done"></div>
+            <div class="track-line done"></div>
+            <div class="track-dot done"></div>
+            <div class="track-line active"></div>
+            <div class="track-dot active pulse"></div>
+            <div class="track-line"></div>
+            <div class="track-dot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+  <!-- PROBLEM SOLUTION SECTION -->
+  <section class="problems-section" id="problems">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Why SmartB2B?</div>
+        <h2 class="section-title">Solving Real Problems for <span class="gradient-text">Local Businesses</span></h2>
+        <p class="section-subtitle">Traditional wholesale trading is broken. We fix it.</p>
+      </div>
+      <div class="problems-grid">
+        <div class="problem-card reveal-card">
+          <div class="problem-icon">🔍</div>
+          <h3>Finding Suppliers</h3>
+          <p>Small shopkeepers struggle to find trustworthy wholesalers at competitive prices beyond their personal network.</p>
+          <div class="solution-tag">✓ Verified Supplier Directory</div>
+        </div>
+        <div class="problem-card reveal-card">
+          <div class="problem-icon">📜</div>
+          <h3>Unclear Agreements</h3>
+          <p>Verbal deals lead to disputes over prices, quantities, delivery dates, and payment terms.</p>
+          <div class="solution-tag">✓ Digital Agreement System</div>
+        </div>
+        <div class="problem-card reveal-card">
+          <div class="problem-icon">🛡️</div>
+          <h3>Fraud & Spam</h3>
+          <p>Fake businesses, suspicious offers, and misleading listings cause financial losses.</p>
+          <div class="solution-tag">✓ SmartTrust AI Detection</div>
+        </div>
+        <div class="problem-card reveal-card">
+          <div class="problem-icon">📦</div>
+          <h3>Shipping Problems</h3>
+          <p>No reliable way to track orders, confirm deliveries, or handle exceptions professionally.</p>
+          <div class="solution-tag">✓ Real-time Order Tracking</div>
+        </div>
+        <div class="problem-card reveal-card">
+          <div class="problem-icon">⭐</div>
+          <h3>Lack of Trust</h3>
+          <p>New businesses have no verifiable record of past transactions to establish credibility.</p>
+          <div class="solution-tag">✓ Transaction-Based Reviews</div>
+        </div>
+        <div class="problem-card reveal-card">
+          <div class="problem-icon">💰</div>
+          <h3>Payment Risk</h3>
+          <p>Buyers fear paying upfront while suppliers worry about non-payment after delivery.</p>
+          <div class="solution-tag">✓ Secure Payment Records</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- HOW IT WORKS -->
+  <section class="workflow-section" id="workflow">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Deal Workflow</div>
+        <h2 class="section-title">How a <span class="gradient-text">SmartB2B Deal</span> Works</h2>
+        <p class="section-subtitle">From discovery to delivery — every step is recorded and verified.</p>
+      </div>
+      <div class="workflow-steps">
+        <div class="workflow-step reveal-left">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <div class="step-icon">🏢</div>
+            <h3>Register & Verify</h3>
+            <p>Create your business profile and submit verification documents. Build instant credibility on the platform.</p>
+          </div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="workflow-step reveal-right">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <div class="step-icon">🔎</div>
+            <h3>Find or Request Products</h3>
+            <p>Browse the catalog or submit an RFQ (Request for Quotation) to multiple suppliers simultaneously.</p>
+          </div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="workflow-step reveal-left">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <div class="step-icon">💬</div>
+            <h3>Negotiate Terms</h3>
+            <p>Discuss price, quantity, discounts, shipping costs, and payment conditions — all recorded on-platform.</p>
+          </div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="workflow-step reveal-right">
+          <div class="step-number">04</div>
+          <div class="step-content">
+            <div class="step-icon">📝</div>
+            <h3>Sign Digital Agreement</h3>
+            <p>Both parties review and approve a timestamped agreement with full version history.</p>
+          </div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="workflow-step reveal-left">
+          <div class="step-number">05</div>
+          <div class="step-content">
+            <div class="step-icon">🚚</div>
+            <h3>Pay & Ship</h3>
+            <p>Record payment confirmation, generate order, assign shipping partner, and track in real-time.</p>
+          </div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="workflow-step reveal-right">
+          <div class="step-number">06</div>
+          <div class="step-content">
+            <div class="step-icon">⭐</div>
+            <h3>Build Reputation</h3>
+            <p>Confirm delivery, rate your trading partner, and build a verified business trust score.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- FEATURES -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Platform Features</div>
+        <h2 class="section-title">Everything You Need to <span class="gradient-text">Trade Smarter</span></h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card feature-large reveal-card">
+          <div class="feature-visual ai-visual">
+            <div class="ai-rings">
+              <div class="ai-ring ring-1"></div>
+              <div class="ai-ring ring-2"></div>
+              <div class="ai-ring ring-3"></div>
+              <div class="ai-core">AI</div>
+            </div>
+            <div class="ai-alerts">
+              <div class="ai-alert alert-low">✓ Low Risk</div>
+              <div class="ai-alert alert-med">⚠ Review</div>
+              <div class="ai-alert alert-high">🚫 Flagged</div>
+            </div>
+          </div>
+          <div class="feature-text">
+            <div class="feature-icon">🤖</div>
+            <h3>SmartTrust AI</h3>
+            <p>Machine learning detects spam listings, duplicate accounts, price anomalies, and suspicious transaction patterns automatically.</p>
+            <a href="coming-soon.html?feature=ai-trust" class="feature-link">Explore AI →</a>
+          </div>
+        </div>
+        <div class="feature-card reveal-card">
+          <div class="feature-icon">📜</div>
+          <h3>Digital Agreements</h3>
+          <p>Generate timestamped, versioned digital agreements with full approval history and audit trail.</p>
+          <a href="agreements.html" class="feature-link">View Agreements →</a>
+        </div>
+        <div class="feature-card reveal-card">
+          <div class="feature-icon">🏪</div>
+          <h3>Wholesale Marketplace</h3>
+          <p>Browse verified suppliers, compare bulk prices, check MOQs, and request quotations instantly.</p>
+          <a href="marketplace.html" class="feature-link">Browse Market →</a>
+        </div>
+        <div class="feature-card reveal-card">
+          <div class="feature-icon">🚚</div>
+          <h3>Shipment Tracking</h3>
+          <p>Real-time order tracking, delivery confirmations, proof of delivery, and dispute management.</p>
+          <a href="coming-soon.html?feature=shipments" class="feature-link">Track Orders →</a>
+        </div>
+        <div class="feature-card reveal-card">
+          <div class="feature-icon">⭐</div>
+          <h3>Trust & Reputation</h3>
+          <p>Transaction-verified reviews and trust scores help you identify reliable trading partners confidently.</p>
+          <a href="coming-soon.html?feature=dashboard" class="feature-link">View Dashboard →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Real Stories</div>
+        <h2 class="section-title">Trusted by <span class="gradient-text">Local Businesses</span></h2>
+      </div>
+      <div class="testimonials-track" id="testimonialsTrack">
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <div class="tcard-avatar" style="background: linear-gradient(135deg,#6C63FF,#00D4AA)">AK</div>
+            <div>
+              <div class="tcard-name">Ahmed Khan</div>
+              <div class="tcard-role">Wholesale Rice Trader · Lahore</div>
+            </div>
+            <div class="tcard-rating">★★★★★</div>
+          </div>
+          <p>"SmartB2B removed all the guesswork. My buyers can see my stock, prices, and delivery areas clearly. Disputes dropped to zero since I started using digital agreements."</p>
+          <div class="tcard-badge">✓ Verified Supplier</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <div class="tcard-avatar" style="background: linear-gradient(135deg,#FF6B6B,#FF8C00)">SF</div>
+            <div>
+              <div class="tcard-name">Sara Farooq</div>
+              <div class="tcard-role">General Store Owner · Karachi</div>
+            </div>
+            <div class="tcard-rating">★★★★★</div>
+          </div>
+          <p>"I used to spend days calling wholesalers to compare prices. Now I send one RFQ and get 5 quotes in hours. The verified badge tells me exactly who to trust."</p>
+          <div class="tcard-badge">✓ Active Buyer</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <div class="tcard-avatar" style="background: linear-gradient(135deg,#00D4AA,#0099FF)">MR</div>
+            <div>
+              <div class="tcard-name">Muhammad Raza</div>
+              <div class="tcard-role">Electronics Distributor · Rawalpindi</div>
+            </div>
+            <div class="tcard-rating">★★★★★</div>
+          </div>
+          <p>"The AI fraud detection caught a duplicate listing trying to undercut my prices with fake products. SmartTrust AI actually works — it saved me from a major loss."</p>
+          <div class="tcard-badge">✓ Verified Supplier</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="tcard-header">
+            <div class="tcard-avatar" style="background: linear-gradient(135deg,#9B59B6,#6C63FF)">FH</div>
+            <div>
+              <div class="tcard-name">Fatima Hassan</div>
+              <div class="tcard-role">Textile Manufacturer · Faisalabad</div>
+            </div>
+            <div class="tcard-rating">★★★★★</div>
+          </div>
+          <p>"The digital agreement system is brilliant. Every deal has a paper trail. My business trust score is now 94/100 and buyers approach me directly instead of the other way."</p>
+          <div class="tcard-badge">✓ Verified Supplier</div>
+        </div>
+      </div>
+      <div class="testimonial-controls">
+        <button class="tctrl-btn" id="prevTest" aria-label="Previous">←</button>
+        <div class="tctrl-dots" id="testDots"></div>
+        <button class="tctrl-btn" id="nextTest" aria-label="Next">→</button>
+      </div>
+    </div>
+  </section>
+  <!-- USER ROLES -->
+  <section class="roles-section" id="roles">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Who Uses SmartB2B</div>
+        <h2 class="section-title">Built for Every <span class="gradient-text">Business Role</span></h2>
+      </div>
+      <div class="roles-grid">
+        <div class="role-card reveal-card" data-role="buyer">
+          <div class="role-icon">🛒</div>
+          <h3>Buyer / Shopkeeper</h3>
+          <ul class="role-features">
+            <li>Search & compare supplier prices</li>
+            <li>Request multiple quotations</li>
+            <li>Negotiate & approve agreements</li>
+            <li>Track deliveries in real-time</li>
+            <li>Build purchase history & reviews</li>
+          </ul>
+          <a href="coming-soon.html?feature=register&amp;role=buyer" class="btn-role">Join as Buyer</a>
+        </div>
+        <div class="role-card reveal-card featured-role" data-role="supplier">
+          <div class="role-popular">Most Popular</div>
+          <div class="role-icon">🏭</div>
+          <h3>Supplier / Wholesaler</h3>
+          <ul class="role-features">
+            <li>List products with bulk pricing</li>
+            <li>Manage inventory & stock levels</li>
+            <li>Receive & respond to RFQs</li>
+            <li>Confirm orders & track payments</li>
+            <li>Build a verified trust score</li>
+          </ul>
+          <a href="coming-soon.html?feature=register&amp;role=supplier" class="btn-role btn-role-featured">Join as Supplier</a>
+        </div>
+        <div class="role-card reveal-card" data-role="shipper">
+          <div class="role-icon">🚚</div>
+          <h3>Shipping Partner</h3>
+          <ul class="role-features">
+            <li>Accept shipment requests</li>
+            <li>Update tracking status live</li>
+            <li>Upload proof of delivery</li>
+            <li>Record delivery exceptions</li>
+            <li>Earn reliable partner rating</li>
+          </ul>
+          <a href="coming-soon.html?feature=register&amp;role=shipper" class="btn-role">Join as Shipper</a>
+        </div>
+        <div class="role-card reveal-card" data-role="admin">
+          <div class="role-icon">🛡️</div>
+          <h3>Administrator</h3>
+          <ul class="role-features">
+            <li>Verify business registrations</li>
+            <li>Investigate AI fraud alerts</li>
+            <li>Manage complaints & disputes</li>
+            <li>Review flagged deals</li>
+            <li>Suspend risky accounts</li>
+          </ul>
+          <a href="coming-soon.html?feature=login&amp;role=admin" class="btn-role">Admin Login</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-orb cta-orb-1"></div>
+        <div class="cta-orb cta-orb-2"></div>
+        <div class="cta-content">
+          <div class="section-badge">Start Today</div>
+          <h2>Ready to Transform Your <span class="gradient-text">Business Trading?</span></h2>
+          <p>Join thousands of local businesses already trading smarter with SmartB2B. Free to start — no credit card required.</p>
+          <div class="cta-actions">
+            <a href="coming-soon.html?feature=register" class="btn-primary btn-lg">Create Free Account</a>
+            <a href="marketplace.html" class="btn-outline btn-lg">Explore Marketplace</a>
+          </div>
+          <div class="cta-note">🔒 Secure · Verified · AI-Protected · Made for Pakistan</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <div class="logo-icon">
+              <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+                <path d="M4 8L14 3L24 8V20L14 25L4 20V8Z" fill="url(#fLogoGrad)"/>
+                <defs><linearGradient id="fLogoGrad" x1="4" y1="3" x2="24" y2="25"><stop stop-color="#6C63FF"/><stop offset="1" stop-color="#00D4AA"/></linearGradient></defs>
+              </svg>
+            </div>
+            <span class="logo-text">Smart<span class="logo-accent">B2B</span></span>
+          </a>
+          <p class="footer-tagline">Local Trade. Verified Trust.</p>
+          <p class="footer-desc">An AI-powered B2B marketplace for small businesses, wholesalers, and manufacturers across Pakistan.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+            <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
+            <a href="#" class="social-btn" aria-label="Facebook">f</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <a href="marketplace.html">Marketplace</a>
+          <a href="agreements.html">Agreements</a>
+          <a href="coming-soon.html?feature=shipments">Shipments</a>
+          <a href="coming-soon.html?feature=ai-trust">SmartTrust AI</a>
+          <a href="coming-soon.html?feature=dashboard">Dashboard</a>
+        </div>
+        <div class="footer-col">
+          <h4>Business Roles</h4>
+          <a href="coming-soon.html?feature=register&amp;role=buyer">Buyers</a>
+          <a href="coming-soon.html?feature=register&amp;role=supplier">Suppliers</a>
+          <a href="coming-soon.html?feature=register&amp;role=shipper">Shippers</a>
+          <a href="coming-soon.html?feature=login&amp;role=admin">Administrators</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About SmartB2B</a>
+          <a href="#">How It Works</a>
+          <a href="#">Pricing</a>
+          <a href="#">Contact</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 SmartB2B. All rights reserved. · UI Prototype · Sample data only · Not connected to a live database or payment system.</p>
+        <div class="footer-badges">
+          <span class="footer-badge">🤖 AI Protected</span>
+          <span class="footer-badge">🔒 Secure</span>
+          <span class="footer-badge">🇵🇰 Made for Pakistan</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+  <script src="js/landing.js"></script>
+</body>
+</html>

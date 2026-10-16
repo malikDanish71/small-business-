@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marketplace — SmartB2B Wholesale Trading</title>
+  <meta name="description" content="Browse verified wholesale suppliers on SmartB2B. Compare prices, check stock, request quotations, and trade securely." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/globals.css" />
+  <link rel="stylesheet" href="css/marketplace.css" />
+</head>
+<body>
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 28 28" fill="none"><path d="M4 8L14 3L24 8V20L14 25L4 20V8Z" fill="url(#lg1)"/><defs><linearGradient id="lg1" x1="4" y1="3" x2="24" y2="25"><stop stop-color="#6C63FF"/><stop offset="1" stop-color="#00D4AA"/></linearGradient></defs></svg>
+        </div>
+        <span class="logo-text">Smart<span class="logo-accent">B2B</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="marketplace.html" class="nav-link active">Marketplace</a>
+        <a href="agreements.html" class="nav-link">Agreements</a>
+        <a href="coming-soon.html?feature=shipments" class="nav-link">Shipments</a>
+        <a href="coming-soon.html?feature=ai-trust" class="nav-link">AI Trust</a>
+        <a href="coming-soon.html?feature=dashboard" class="nav-link">Dashboard</a>
+      </div>
+      <div class="nav-actions">
+        <a href="coming-soon.html?feature=login" class="btn-ghost">Sign In</a>
+        <a href="coming-soon.html?feature=register" class="btn-primary">Get Started</a>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div style="padding-top: var(--nav-height);">
+    <!-- PAGE HEADER -->
+    <div style="background: var(--bg-secondary); border-bottom: 1px solid var(--border); padding: 40px 0 32px;">
+      <div class="container">
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+          <div>
+            <div class="section-badge" style="margin-bottom:12px;">Wholesale Marketplace</div>
+            <h1 style="font-family:var(--font-display);font-size:clamp(28px,4vw,40px);font-weight:800;margin-bottom:8px;">Find Verified <span class="gradient-text">Wholesale Suppliers</span></h1>
+            <p style="color:var(--text-secondary);font-size:15px;">Compare prices, request quotations, and trade with AI-verified businesses.</p>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center;">
+            <span style="font-size:14px;color:var(--text-muted);">📦 <strong style="color:var(--text-primary);">2,847</strong> products listed</span>
+            <button class="btn-primary" onclick="openModal('rfqModal')">+ Post RFQ</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <!-- SEARCH BAR -->
+      <div style="padding: 28px 0 0;">
+        <div class="marketplace-search-bar">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" placeholder="Search products, suppliers, or categories..." />
+          <div style="display:flex;gap:8px;align-items:center;">
+            <select class="sort-select" style="border:none;background:none;font-size:13px;" id="locationFilter">
+              <option value="">All Cities</option>
+              <option>Karachi</option><option>Lahore</option><option>Islamabad</option>
+              <option>Rawalpindi</option><option>Faisalabad</option><option>Peshawar</option>
+            </select>
+            <button class="search-btn" onclick="filterProducts()">Search</button>
+          </div>
+        </div>
+        <!-- CATEGORY PILLS -->
+        <div class="category-pills" id="categoryPills">
+          <div class="category-pill active" data-cat="all" onclick="filterCat('all', this)">🏪 All Categories</div>
+          <div class="category-pill" data-cat="food" onclick="filterCat('food', this)">🌾 Food & Grain</div>
+          <div class="category-pill" data-cat="packaging" onclick="filterCat('packaging', this)">📦 Packaging</div>
+          <div class="category-pill" data-cat="electronics" onclick="filterCat('electronics', this)">⚡ Electronics</div>
+          <div class="category-pill" data-cat="textile" onclick="filterCat('textile', this)">🧵 Textiles</div>
+          <div class="category-pill" data-cat="safety" onclick="filterCat('safety', this)">🦺 Safety Equipment</div>
+          <div class="category-pill" data-cat="chemicals" onclick="filterCat('chemicals', this)">🧪 Chemicals</div>
+          <div class="category-pill" data-cat="machinery" onclick="filterCat('machinery', this)">⚙️ Machinery</div>
+        </div>
+      </div>
+      <!-- MAIN LAYOUT -->
+      <div class="marketplace-layout">
+        <!-- SIDEBAR FILTERS -->
+        <aside class="filter-sidebar">
+          <h3>Filters <span class="filter-clear" onclick="clearFilters()">Clear all</span></h3>
+          <div class="filter-group">
+            <div class="filter-group-label">Verification Status</div>
+            <label class="filter-option"><input type="checkbox" id="fVerified" onchange="applyFilters()" checked /> <label for="fVerified">Verified Suppliers</label> <span class="filter-count">142</span></label>
+            <label class="filter-option"><input type="checkbox" id="fPending" onchange="applyFilters()" /> <label for="fPending">Pending Verification</label> <span class="filter-count">38</span></label>
+          </div>
+          <div class="filter-divider"></div>
+          <div class="filter-group">
+            <div class="filter-group-label">Price Range (PKR)</div>
+            <div class="price-range">
+              <div class="range-inputs">
+                <input type="number" class="range-input" id="priceMin" placeholder="Min" value="0" />
+                <span style="color:var(--text-muted);font-size:12px;padding-top:10px;">—</span>
+                <input type="number" class="range-input" id="priceMax" placeholder="Max" value="50000" />
+              </div>
+            </div>
+          </div>
+          <div class="filter-divider"></div>
+          <div class="filter-group">
+            <div class="filter-group-label">Minimum Order</div>
+            <label class="filter-option"><input type="radio" name="moq" value="any" checked onchange="applyFilters()" /> <label>Any MOQ</label></label>
+            <label class="filter-option"><input type="radio" name="moq" value="small" onchange="applyFilters()" /> <label>≤ 50 units</label></label>
+            <label class="filter-option"><input type="radio" name="moq" value="medium" onchange="applyFilters()" /> <label>51–200 units</label></label>
+            <label class="filter-option"><input type="radio" name="moq" value="bulk" onchange="applyFilters()" /> <label>201+ units</label></label>
+          </div>
+          <div class="filter-divider"></div>
+          <div class="filter-group">
+            <div class="filter-group-label">Trust Score</div>
+            <label class="filter-option"><input type="checkbox" id="fHigh" onchange="applyFilters()" checked /> <label for="fHigh">80+ (Excellent)</label> <span class="filter-count">98</span></label>
+            <label class="filter-option"><input type="checkbox" id="fMed" onchange="applyFilters()" checked /> <label for="fMed">60–79 (Good)</label> <span class="filter-count">44</span></label>
+            <label class="filter-option"><input type="checkbox" id="fLow" onchange="applyFilters()" /> <label for="fLow">Below 60</label> <span class="filter-count">18</span></label>
+          </div>
+          <div class="filter-divider"></div>
+          <div class="filter-group">
+            <div class="filter-group-label">Location</div>
+            <label class="filter-option"><input type="checkbox" checked onchange="applyFilters()" /> <label>Karachi</label> <span class="filter-count">56</span></label>
+            <label class="filter-option"><input type="checkbox" checked onchange="applyFilters()" /> <label>Lahore</label> <span class="filter-count">48</span></label>
+            <label class="filter-option"><input type="checkbox" onchange="applyFilters()" /> <label>Islamabad</label> <span class="filter-count">22</span></label>
+            <label class="filter-option"><input type="checkbox" onchange="applyFilters()" /> <label>Faisalabad</label> <span class="filter-count">16</span></label>
+          </div>
+          <button class="btn-primary" style="width:100%;margin-top:8px;" onclick="applyFilters()">Apply Filters</button>
+        </aside>
+        <!-- PRODUCTS AREA -->
+        <div class="products-area">
+          <div class="products-toolbar">
+            <div class="products-count">Showing <strong id="productCountDisplay">18</strong> of <strong>2,847</strong> products</div>
+            <div class="sort-controls">
+              <select class="sort-select" id="sortSelect" onchange="sortProducts()">
+                <option value="relevance">Sort: Relevance</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="trust">Trust Score</option>
+                <option value="newest">Newest First</option>
+              </select>
+              <div class="view-toggle">
+                <button class="view-btn active" id="gridViewBtn" onclick="setView('grid', this)" title="Grid View">⊞</button>
+                <button class="view-btn" id="listViewBtn" onclick="setView('list', this)" title="List View">☰</button>
+              </div>
+            </div>
+          </div>
+          <div class="products-grid" id="productsGrid"></div>
+          <!-- PAGINATION -->
+          <div class="pagination">
+            <button class="page-btn" onclick="changePage(-1)">←</button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn" onclick="this.closest('.pagination').querySelector('.active').classList.remove('active');this.classList.add('active');">2</button>
+            <button class="page-btn" onclick="this.closest('.pagination').querySelector('.active').classList.remove('active');this.classList.add('active');">3</button>
+            <span style="color:var(--text-muted);padding:0 4px;">...</span>
+            <button class="page-btn">18</button>
+            <button class="page-btn" onclick="changePage(1)">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- QUOTE MODAL -->
+  <div class="modal-overlay" id="quoteModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title">📋 Request Quotation</h2>
+        <button class="modal-close" onclick="closeModal('quoteModal')">✕</button>
+      </div>
+      <div id="quoteProductInfo" style="background:var(--surface-2);border-radius:var(--radius-lg);padding:16px;margin-bottom:20px;border:1px solid var(--border);">
+        <div style="font-weight:700;margin-bottom:4px;" id="quoteProductName">Product Name</div>
+        <div style="font-size:13px;color:var(--text-secondary);" id="quoteSupplierName">Supplier</div>
+      </div>
+      <div class="quote-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Quantity Required</label>
+            <input type="number" class="form-input" id="quoteQty" placeholder="e.g. 500" min="1" oninput="calcQuote()" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Delivery City</label>
+            <select class="form-select" id="quoteCity">
+              <option>Karachi</option><option>Lahore</option><option>Islamabad</option><option>Rawalpindi</option><option>Faisalabad</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Payment Terms</label>
+          <select class="form-select" id="quotePayment">
+            <option>Advance Payment (full)</option>
+            <option>50% Advance, 50% on Delivery</option>
+            <option>Payment on Delivery</option>
+            <option>Net 30 Days</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Special Requirements</label>
+          <textarea class="form-textarea" id="quoteNote" placeholder="Any specific requirements, packaging, delivery date..."></textarea>
+        </div>
+        <div class="quote-summary" id="quoteSummary" style="display:none;">
+          <div style="font-weight:700;margin-bottom:12px;font-size:14px;">Quote Summary</div>
+          <div class="quote-summary-row"><span>Unit Price</span><span id="qUnitPrice">—</span></div>
+          <div class="quote-summary-row"><span>Quantity</span><span id="qQty">—</span></div>
+          <div class="quote-summary-row"><span>Subtotal</span><span id="qSubtotal">—</span></div>
+          <div class="quote-summary-row"><span>Est. Shipping</span><span>PKR 1,500 – 3,500</span></div>
+          <div class="quote-summary-row"><span style="font-size:16px;">Total Estimate</span><span id="qTotal" style="font-size:18px;color:var(--secondary);">—</span></div>
+        </div>
+        <button class="btn-primary" style="width:100%;" onclick="submitQuote()">Send Quotation Request</button>
+      </div>
+    </div>
+  </div>
+  <!-- RFQ MODAL -->
+  <div class="modal-overlay" id="rfqModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title">📣 Post a Request for Quotation</h2>
+        <button class="modal-close" onclick="closeModal('rfqModal')">✕</button>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Product / Item Needed</label>
+        <input type="text" class="form-input" placeholder="e.g. Basmati Rice 25kg bags" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Category</label>
+        <select class="form-select"><option>Food & Grain</option><option>Packaging</option><option>Electronics</option><option>Textiles</option><option>Safety Equipment</option></select>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div class="form-group">
+          <label class="form-label">Target Quantity</label>
+          <input type="number" class="form-input" placeholder="500" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Budget (PKR)</label>
+          <input type="number" class="form-input" placeholder="Max price per unit" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Delivery Required By</label>
+        <input type="date" class="form-input" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Description</label>
+        <textarea class="form-textarea" placeholder="Describe your requirement in detail..."></textarea>
+      </div>
+      <button class="btn-primary" style="width:100%;" onclick="submitRFQ()">Post RFQ to Suppliers</button>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none;padding-top:0;">
+        <p>© 2024 SmartB2B · Marketplace Demo · Sample data only</p>
+        <div class="footer-badges">
+          <span class="footer-badge">🤖 AI Protected</span>
+          <span class="footer-badge">🔒 Secure</span>
+          <span class="footer-badge">🇵🇰 Made for Pakistan</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+  <script src="js/marketplace.js"></script>
+</body>
+</html>

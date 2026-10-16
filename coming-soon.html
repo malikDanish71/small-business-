@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="This SmartB2B prototype section is not included yet." />
+  <title>Not Included Yet — SmartB2B</title>
+  <link rel="stylesheet" href="css/globals.css" />
+  <style>
+    main { min-height: 100vh; display: grid; place-items: center; padding: 32px 18px; background: radial-gradient(ellipse at 70% 25%, rgba(105,201,165,.12), transparent 46%), var(--bg); }
+    .notice { width: min(560px, 100%); padding: 32px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+    .notice h1 { margin: 8px 0; font: 800 30px var(--font-display); }
+    .notice p { color: var(--text-secondary); }
+    .notice nav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="notice" aria-labelledby="noticeTitle">
+      <span class="section-badge">SmartB2B Prototype</span>
+      <h1 id="noticeTitle">This section isn't included yet</h1>
+      <p id="noticeMessage">The supplied project contains the Marketplace, Agreements, and home pages. This destination is a placeholder, not a live account or service.</p>
+      <nav aria-label="Available pages">
+        <a class="btn-primary" href="index.html">Home</a>
+        <a class="btn-outline" href="marketplace.html">Marketplace</a>
+        <a class="btn-outline" href="agreements.html">Agreements</a>
+      </nav>
+    </section>
+  </main>
+  <script>
+    const labels = { shipments: 'Shipment tracking', 'ai-trust': 'SmartTrust AI', dashboard: 'Dashboard', login: 'Sign in', register: 'Account registration' };
+    const feature = new URLSearchParams(location.search).get('feature');
+    const role = new URLSearchParams(location.search).get('role');
+    if (feature) {
+      document.getElementById('noticeTitle').textContent = `${labels[feature] || 'This section'} isn't included yet`;
+      if (role) document.getElementById('noticeMessage').textContent = `The ${role} account flow is not part of this static prototype. No account was created.`;
+    }
+  </script>
+</body>
+</html>
